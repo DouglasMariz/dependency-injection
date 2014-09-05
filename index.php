@@ -1,4 +1,4 @@
-<?php
+<?php //
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Debug\Debug;
@@ -18,7 +18,30 @@ $container->loadFromExtension($extension->getAlias());
 //$loader->load('services.yml');
 
 $container->compile();
+#Cria café
+$cafe = $container->get('Cafe');
 
-$tm = $container->get('teste_manager');
+#cria itens
+$leite = $container->get('Leite');
+$leite->setValor('leite-branco');
+$acucar = $container->get('Acucar');
+$acucar->setValor('acucar mascavo');
 
-var_dump($tm);
+$itens = array($leite, $acucar);
+$cafe->setAdicionais($itens);
+
+$cafe->imprimeCafe();
+
+#Cria café
+$cafe2 = $container->get('Cafe');
+
+#cria itens
+$leite2 = $container->get('Leite');
+$leite2->setValor('leite-desnatado');
+$acucar2 = $container->get('Acucar');
+$acucar2->setValor('acucar fino');
+
+$itens2 = array($leite, $acucar);
+$cafe2->setAdicionais($itens);
+
+$cafe->imprimeCafe();

@@ -1,8 +1,24 @@
 parameters:
     # ...
     mailer.transport: sendmail
+    leite.class: "Vox\Treinamento\Exercicio1\\Leite"
+    cafe.class: "Vox\Treinamento\Exercicio1\Cafe"
+    acucar.class: "Vox\Treinamento\Exercicio1\Acucar"
 
 services:
+    
+    leite:
+        class:     "%leite.class%"
+    
+    acucar:
+        class:     "%acucar.class%"
+        
+    cafe:
+        class:     "%cafe.class%"
+        arguments: ["@leite"]
+
+services:
+
     teste:
         class:     "Vox\Treinamento\DependencyInjection\Teste"
 
